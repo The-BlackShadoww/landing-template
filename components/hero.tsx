@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { useRef } from "react";
 
@@ -9,7 +8,7 @@ const Hero = () => {
 
     return (
         <section
-            className="py-24"
+            className="py-24 mt-40"
             style={{ cursor: 'url("/cursor-you.svg"), auto' }}
             ref={constraintsRef}
         >
@@ -22,7 +21,7 @@ const Hero = () => {
                             initial={{ x: -100, y: 100, opacity: 0 }}
                             animate={{ x: 0, y: 0, opacity: 1 }}
                             transition={{
-                                delay: 0.2,
+                                // delay: 0.5,
                                 ease: "easeInOut",
                                 duration: 0.5,
                             }}
@@ -44,9 +43,9 @@ const Hero = () => {
                         <motion.div
                             className="absolute left-56 top-96"
                             initial={{ x: -200, y: 100, opacity: 0 }}
-                            animate={{ x: 0, y: 0, opacity: 1 }}
+                            animate={{ x: [-200, 0], y: 0, opacity: 1 }}
                             transition={{
-                                delay: 0.2,
+                                // delay: 0.5,
                                 ease: "easeInOut",
                                 duration: 0.5,
                             }}
@@ -78,15 +77,40 @@ const Hero = () => {
 
                     {/* right */}
                     <div className="">
-                        <div className="absolute -right-64 -top-16 hidden lg:block cursor-grab">
-                            <Image
+                        <motion.div
+                            initial={{ x: 100, y: 100, opacity: 0 }}
+                            animate={{ x: 0, y: 0, opacity: 1 }}
+                            transition={{
+                                delay: 0.5,
+                                ease: "easeInOut",
+                                duration: 0.5,
+                            }}
+                            className="absolute -right-64 -top-16 hidden lg:block cursor-grab"
+                        >
+                            <motion.img
                                 src="/design-example-2.png"
                                 width={440}
                                 height={592}
                                 alt="design-example-2"
+                                drag
+                                dragConstraints={{
+                                    top: 0,
+                                    left: 0,
+                                    right: 0,
+                                    bottom: 0,
+                                }}
                             />
-                        </div>{" "}
-                        <div className="absolute right-80 -top-4">
+                        </motion.div>{" "}
+                        <motion.div
+                            initial={{ x: 100, y: 100, opacity: 0 }}
+                            animate={{ x: 0, y: 0, opacity: 1 }}
+                            transition={{
+                                delay: 0.5,
+                                ease: "easeInOut",
+                                duration: 0.5,
+                            }}
+                            className="absolute right-80 -top-4"
+                        >
                             <div className="relative">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -109,7 +133,7 @@ const Hero = () => {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
                 <div className="inline-flex py-1 px-3 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full text-neutral-950 font-semibold">
