@@ -1,10 +1,56 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useRef } from "react";
+import { motion, useAnimate } from "framer-motion";
+import Image from "next/image";
+import { useEffect, useRef } from "react";
 
 const Hero = () => {
     const constraintsRef = useRef(null);
+
+    const [leftDesignScope, leftDesignAnimate] = useAnimate();
+    const [leftPointerScope, leftPointerAnimate] = useAnimate();
+    const [rightDesignScope, rightDesignAnimate] = useAnimate();
+    const [rightPointerScope, rightPointerAnimate] = useAnimate();
+
+    useEffect(() => {
+        leftDesignAnimate([
+            [leftDesignScope.current, { opacity: 1 }, { duration: 0.5 }],
+            [leftDesignScope.current, { x: 0, y: 0 }, { duration: 0.5 }],
+        ]);
+
+        leftPointerAnimate([
+            [leftPointerScope.current, { opacity: 1 }, { duration: 0.5 }],
+            [leftPointerScope.current, { x: -100, y: 0 }, { duration: 0.5 }],
+            [
+                leftPointerScope.current,
+                { x: 0, y: [0, 16, 0] },
+                { duration: 0.5, ease: "easeInOut" },
+            ],
+        ]);
+
+        rightDesignAnimate([
+            [
+                rightDesignScope.current,
+                { opacity: 1 },
+                { duration: 0.5, delay: 1.5 },
+            ],
+            [rightDesignScope.current, { x: 0, y: 0 }, { duration: 0.5 }],
+        ]);
+
+        rightPointerAnimate([
+            [
+                rightPointerScope.current,
+                { opacity: 1 },
+                { duration: 0.5, delay: 1.5 },
+            ],
+            [rightPointerScope.current, { x: 175, y: 0 }, { duration: 0.5 }],
+            [
+                rightPointerScope.current,
+                { x: 0, y: [0, 20, 0] },
+                { duration: 0.5, ease: "easeInOut" },
+            ],
+        ]);
+    }, []);
 
     return (
         <section
@@ -17,38 +63,30 @@ const Hero = () => {
                     {/* Left */}
                     <div className="">
                         <motion.div
+                            ref={leftDesignScope}
+                            drag
+                            initial={{ opacity: 0, x: -100, y: 100 }}
                             className="absolute -left-32 top-16 hidden lg:block cursor-grab"
-                            initial={{ x: -100, y: 100, opacity: 0 }}
-                            animate={{ x: 0, y: 0, opacity: 1 }}
-                            transition={{
-                                // delay: 0.5,
-                                ease: "easeInOut",
-                                duration: 0.5,
-                            }}
                         >
-                            <motion.img
+                            <Image
                                 src="/design-example-1.webp"
                                 width={318}
                                 height={467}
                                 alt="design-example-1"
-                                drag
-                                dragConstraints={{
-                                    top: 0,
-                                    left: 0,
-                                    right: 0,
-                                    bottom: 0,
-                                }}
+                                // drag
+                                // dragConstraints={{
+                                //     top: 0,
+                                //     left: 0,
+                                //     right: 0,
+                                //     bottom: 0,
+                                // }}
+                                draggable="false"
                             />
                         </motion.div>
                         <motion.div
+                            ref={leftPointerScope}
+                            initial={{ opacity: 0, x: -200, y: 100 }}
                             className="absolute left-56 top-96"
-                            initial={{ x: -200, y: 100, opacity: 0 }}
-                            animate={{ x: [-200, 0], y: 0, opacity: 1 }}
-                            transition={{
-                                // delay: 0.5,
-                                ease: "easeInOut",
-                                duration: 0.5,
-                            }}
                         >
                             <div className="relative">
                                 <svg
@@ -78,13 +116,8 @@ const Hero = () => {
                     {/* right */}
                     <div className="">
                         <motion.div
-                            initial={{ x: 100, y: 100, opacity: 0 }}
-                            animate={{ x: 0, y: 0, opacity: 1 }}
-                            transition={{
-                                delay: 0.5,
-                                ease: "easeInOut",
-                                duration: 0.5,
-                            }}
+                            ref={rightDesignScope}
+                            initial={{ opacity: 0, x: 100, y: 100 }}
                             className="absolute -right-64 -top-16 hidden lg:block cursor-grab"
                         >
                             <motion.img
@@ -102,13 +135,8 @@ const Hero = () => {
                             />
                         </motion.div>{" "}
                         <motion.div
-                            initial={{ x: 100, y: 100, opacity: 0 }}
-                            animate={{ x: 0, y: 0, opacity: 1 }}
-                            transition={{
-                                delay: 0.5,
-                                ease: "easeInOut",
-                                duration: 0.5,
-                            }}
+                            ref={rightPointerScope}
+                            initial={{ x: 275, y: 100, opacity: 0 }}
                             className="absolute right-80 -top-4"
                         >
                             <div className="relative">
