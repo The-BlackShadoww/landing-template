@@ -98,12 +98,12 @@ export default function Integrations() {
                                 "linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)",
                         }}
                     >
-                        <Marquee vertical className="[--duration:5s]">
+                        <Marquee vertical className="[--duration:8s]">
                             {firstRow.map((item) => (
                                 <Card key={item.name} {...item} />
                             ))}
                         </Marquee>{" "}
-                        <Marquee reverse vertical className="[--duration:5s]">
+                        <Marquee reverse vertical className="[--duration:8s]">
                             {secondRow.map((item) => (
                                 <Card key={item.name} {...item} />
                             ))}
@@ -114,71 +114,3 @@ export default function Integrations() {
         </section>
     );
 }
-
-// import { Marquee } from "./ui/marquee";
-// import Image from "next/image";
-
-// const content = [
-//     { img: "figma-logo.svg", name: "Figma", description: "Figma" },
-//     { img: "framer-logo.svg", name: "framer", description: "framer" },
-//     { img: "notion-logo.svg", name: "notion", description: "notion" },
-//     { img: "relume-logo.svg", name: "relume", description: "relume" },
-//     { img: "slack-logo.svg", name: "slack", description: "slack" },
-//     {
-//         img: "github-logo.svg",
-//         name: "github",
-//         description: "GitHub is the leading platform for code collaboration.",
-//     },
-// ];
-
-// const firstRow = content.slice(0, content.length / 2);
-// const secondRow = content.slice(content.length / 2);
-
-// const Card = ({
-//     img,
-//     name,
-//     description,
-// }: {
-//     img: string;
-//     name: string;
-//     description: string;
-// }) => {
-//     return (
-//         <div className="bg-neutral-900 border border-white/10 rounded-3xl p-6">
-//             <div className="flex justify-center">
-//                 <Image
-//                     alt="GitHub"
-//                     loading="lazy"
-//                     width="400"
-//                     height="400"
-//                     decoding="async"
-//                     data-nimg="1"
-//                     className="size-24"
-//                     style={{ color: "transparent" }}
-//                     src={img}
-//                 />
-//             </div>
-//             <h3 className="text-3xl text-center mt-6">{name}</h3>
-//             <p className="text-center text-white/50 mt-2">{description}</p>
-//         </div>
-//     );
-// };
-
-// export default function Integrations() {
-//     return (
-//         <div className="relative flex h-[500px] w-full flex-row items-center justify-center overflow-hidden">
-//             <Marquee vertical className="[--duration:5s]">
-//                 {firstRow.map((item) => (
-//                     <Card key={item.name} {...item} />
-//                 ))}
-//             </Marquee>
-//             <Marquee reverse vertical className="[--duration:5s]">
-//                 {secondRow.map((item) => (
-//                     <Card key={item.name} {...item} />
-//                 ))}
-//             </Marquee>
-//             <div className="pointer-events-none absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-background"></div>
-//             <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-background"></div>
-//         </div>
-//     );
-// }
