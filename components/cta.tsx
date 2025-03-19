@@ -16,7 +16,7 @@ const Cta = () => {
             },
             { duration: 30, ease: "linear", repeat: Infinity }
         );
-    }, []);
+    }, [animate, scope]);
 
     useEffect(() => {
         if (animation.current) {

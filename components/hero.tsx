@@ -50,7 +50,16 @@ const Hero = () => {
                 { duration: 0.5, ease: "easeInOut" },
             ],
         ]);
-    }, []);
+    }, [
+        leftDesignAnimate,
+        leftDesignScope,
+        leftPointerAnimate,
+        leftPointerScope,
+        rightDesignAnimate,
+        rightDesignScope,
+        rightPointerAnimate,
+        rightPointerScope,
+    ]);
 
     return (
         <section
